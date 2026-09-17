@@ -1,0 +1,105 @@
+/**
+ * Krayin SaaS Guide theme.
+ *
+ * Only the brand tokens and a few affordances are overridden — everything else
+ * is VitePress's default theme, which is well-tuned for documentation.
+ *
+ * Brand colour is Krayin's admin default (#0E90D9), so the docs and the product
+ * feel like the same thing.
+ */
+
+:root {
+  --vp-c-brand-1: #0e90d9;
+  --vp-c-brand-2: #0a7ab8;
+  --vp-c-brand-3: #0968a0;
+  --vp-c-brand-soft: rgba(14, 144, 217, 0.14);
+
+  /* Used by the home hero. */
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    #0e90d9 30%,
+    #41c7ff
+  );
+
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    rgba(14, 144, 217, 0.45),
+    rgba(65, 199, 255, 0.35)
+  );
+  --vp-home-hero-image-filter: blur(48px);
+}
+
+.dark {
+  /* Lift the brand slightly so it holds contrast on the dark ground. */
+  --vp-c-brand-1: #3aabec;
+  --vp-c-brand-2: #5bbcf2;
+  --vp-c-brand-3: #7cc7f2;
+  --vp-c-brand-soft: rgba(58, 171, 236, 0.16);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(68px);
+  }
+}
+
+/**
+ * The wordmark is the only branding in the nav bar (siteTitle is off), so give
+ * it room to breathe and a sensible cap on height.
+ */
+.VPNavBarTitle .logo {
+  height: 30px;
+  width: auto;
+}
+
+/**
+ * Local search: tint the matched words with the brand rather than painting a
+ * solid block over them, which is hard to read at small sizes.
+ */
+:root {
+  --vp-local-search-highlight-bg: var(--vp-c-brand-soft);
+  --vp-local-search-highlight-text: var(--vp-c-brand-1);
+  --vp-local-search-result-selected-bg: var(--vp-c-bg-alt);
+}
+
+/**
+ * Custom blocks carry most of the guidance in this site, so make them a little
+ * more present than the default.
+ */
+.vp-doc .custom-block {
+  border-radius: 10px;
+}
+
+.vp-doc .custom-block.info {
+  border-color: var(--vp-c-brand-soft);
+}
+
+/**
+ * Screenshots sit inside <ImagePopup>, which styles the image itself. This only
+ * keeps a bare <img> (e.g. a diagram) from touching the text above it.
+ */
+.vp-doc img:not(.thumbnail):not(.popup-image) {
+  border-radius: 8px;
+  margin: 18px 0;
+}
+
+/**
+ * Tables in this guide are mostly field lists — left-align and let them breathe
+ * rather than centring short cells.
+ */
+.vp-doc table {
+  display: table;
+  width: 100%;
+}
+
+.vp-doc th,
+.vp-doc td {
+  text-align: start;
+}
